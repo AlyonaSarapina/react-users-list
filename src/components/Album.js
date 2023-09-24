@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom';
-import { fetchPost, fetchPostComments } from '../api/fetch';
+import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { fetchPhotos } from '../api/fetch';
 
 export const Album = () => {
   const [albums, setAlbums] = useState([]);
-  const { state } = useLocation();
+  const params = useParams();
+  const id = params.albumId.slice(1);
 
   useEffect(() => {
-    fetchPhotos(state.albumId).then(data => setAlbums(data));
+    fetchPhotos(id).then(data => setAlbums(data));
   }, [])
 
   return (

@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { fetchUserAlbums, fetchUserPosts } from '../api/fetch';
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 export const UserAlbums = () => {
   const [albums, setAlbums] = useState([]);
-  const { state } = useLocation();
+  const params = useParams();
+  const id = params.userId.slice(1)
 
   useEffect(() => {
-    fetchUserAlbums(state.userId).then(data => setAlbums(data))
+    fetchUserAlbums(id).then(data => setAlbums(data))
   }, [])
 
   return (

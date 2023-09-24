@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { fetchUserPosts } from '../api/fetch';
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 export const UserPosts = () => {
   const [posts, setPosts] = useState([]);
-  const { state } = useLocation();
+  const params = useParams();
+  const id = params.userId.slice(1);
 
   useEffect(() => {
-    fetchUserPosts(state.userId).then(data => setPosts(data))
+    fetchUserPosts(id).then(data => setPosts(data))
   }, [])
 
   return (

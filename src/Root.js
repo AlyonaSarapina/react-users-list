@@ -18,7 +18,7 @@ export const Root = () => (
         <Route path=':userId/albums' element={<UserAlbums />} />
         <Route path='posts/:postId' element={<Post />} />
         <Route path='albums/:albumId' element={<Album />} />
-        <Route path="home" element={<Navigate to=".." />} />
+        <Route path="home" element={<Navigate to="/" />} />
       </Route>
     </Routes>
   </Router>
