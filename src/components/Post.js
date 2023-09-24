@@ -1,7 +1,43 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom';
+import { fetchPost, fetchPostComments } from '../api/fetch';
 
 export const Post = () => {
+  const [post, setPost] = useState(null);
+  const [comments, setComments] = useState([]);
+  const { state } = useLocation();
+
+  useEffect(() => {
+    fetchPost(state.postId).then(data => setPost(data));
+    fetchPostComments(state.postId).then(data => setComments(data));
+  }, [])
+
+  console.log(comments, post)
+
   return (
-    <div>Post</div>
+    <div className='post-container'>
+      {post && (
+        <div className='post-info'>
+          <div className="post-body">
+            <h1>Title</h1>
+            <div className="post-body-title">
+              {post.title}
+            </div>
+            <h2>Content</h2>
+            <div className="post-body-text">
+              {post.body}
+            </div>
+          </div>
+          <h3>Comments</h3>
+          {comments.map((comment) => (
+            <div className="post-comment" key={comment.id}>
+              <div className="post-comment-name">{comment.name}</div>
+              <div className="post-comment-email">{comment.email}</div>
+              <div className="post-comment-body">{comment.body}</div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
   )
 }

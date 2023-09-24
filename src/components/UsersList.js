@@ -30,12 +30,14 @@ const UsersList = () => {
                 <div className='links'>
                   <Link
                     to={`/:${user.id}/posts`}
+                    state={{ userId: user.id }}
                     className='posts'
                   >
                     Posts
                   </Link>
                   <Link
                     to={`/:${user.id}/albums`}
+                    state={{ userId: user.id }}
                     className='albums'
                   >
                     Albums
