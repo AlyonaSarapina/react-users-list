@@ -11,7 +11,7 @@ To install all dependencies and build the project run:<br />
 `npm i`<br />
 `npm run build`<br />
 
-You can run the project for CSR:<br />
+You can run the project with CSR:<br />
 `npm run serve`<br />
 open browser on [http://localhost:3010](http://localhost:3010)
 
