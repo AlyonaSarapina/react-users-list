@@ -18,4 +18,4 @@ open browser on [http://localhost:3010](http://localhost:3010)
 OR SSR:<br />
 npm run dev:build-server<br />
 npm run dev:start<br />
-open browser on [http://localhost:3010](http://localhost:3010)
+open browser on [http://localhost:3010](http://localhost:3006)
