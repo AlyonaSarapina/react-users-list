@@ -5,4 +5,6 @@ import { Root } from './Root';
 
 const root = document.getElementById('root');
 
-ReactDOM.render(<Root />, root);
+ReactDOM.hydrate(<React.StrictMode>
+  <Root />
+</React.StrictMode>, root);
