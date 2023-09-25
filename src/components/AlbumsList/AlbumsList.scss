@@ -1,0 +1,25 @@
+.albums-container {
+  padding: 35px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  .album {
+    display: flex;
+  }
+
+  .album-no {
+    width: 7%;
+    color: green;
+  }
+
+  .album-title {
+    width: 93%;
+    text-decoration: none;
+    color: black;
+
+    &:hover {
+      color: #B0B0B0;
+    }
+  }
+}

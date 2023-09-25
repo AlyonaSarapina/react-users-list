@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { fetchUserPosts } from '../api/fetch';
+import { fetchUserPosts } from '../../api/fetch';
+import './UserPosts.scss'
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
@@ -13,10 +14,10 @@ export const UserPosts = () => {
   }, [])
 
   return (
-    <div>
+    <div className='posts-container'>
       {posts.map((post, index) => (
         <div key={post.id} className='post'>
-          <div className='post-no'>{index + 1}</div>
+          <div className='post-no'>{index + 1}.</div>
           <Link
             to={`/posts/:${post.id}`}
             state={{ postId: post.id }}

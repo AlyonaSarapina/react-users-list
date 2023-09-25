@@ -1,25 +1,22 @@
 import React, { useEffect, useState } from 'react'
-import { fetchUserAlbums, fetchUserPosts } from '../api/fetch';
-import { useParams } from 'react-router-dom';
+import { fetchAlbums } from '../../api/fetch';
+import './AlbumsList.scss'
 import { Link } from 'react-router-dom';
 
-export const UserAlbums = () => {
+export const AlbumsList = () => {
   const [albums, setAlbums] = useState([]);
-  const params = useParams();
-  const id = params.userId.slice(1)
 
   useEffect(() => {
-    fetchUserAlbums(id).then(data => setAlbums(data))
+    fetchAlbums().then(data => setAlbums(data))
   }, [])
 
   return (
-    <div>
-      {albums.map((album, index) => (
+    <div className='albums-container'>
+      {albums && albums.map((album, index) => (
         <div key={album.id} className='album'>
-          <div className='album-no'>{index + 1}</div>
+          <div className='album-no'>{index + 1}.</div>
           <Link
             to={`/albums/:${album.id}`}
-            state={{ albumId: album.id }}
             className='album-title'
           >
             {album.title}

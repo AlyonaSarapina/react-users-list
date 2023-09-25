@@ -5,6 +5,14 @@ export const fetchUsers = () => {
   return fetch(`${BASE_URL}/users`).then(res => res.json());
 }
 
+export const fetchPosts = () => {
+  return fetch(`${BASE_URL}/posts`).then(res => res.json());
+}
+
+export const fetchAlbums = () => {
+  return fetch(`${BASE_URL}/albums`).then(res => res.json());
+}
+
 export const fetchUserPosts = (userId) => {
   return fetch(`${BASE_URL}/posts?userId=${userId}`).then(res => res.json());
 }

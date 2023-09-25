@@ -1,0 +1,23 @@
+.album-container {
+  padding: 35px 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 20px;
+
+  .album-body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    
+    &-img img {
+      width: 100%;
+    }
+
+    &-title {
+      width: 100%;
+      display: block;
+      white-space:nowrap;
+      overflow:hidden;
+    }
+  }
+}
