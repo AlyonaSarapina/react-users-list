@@ -2,10 +2,10 @@
 
 [DEMO LINK](https://alyonasarapina.github.io/react-users-list/)
 
-On the Home page you can find Users list with a card for each user.<br /> 
-Every card contains a link with Posts and Albums list where you can a titles as links following to the content with details. Home page has an options to SEARCH and SORT by the user name.<br />
+On the <strong>Home page</strong> you can find Users list with a card for each user.<br />
+Every card contains a link with <strong>Posts</strong> and <strong>Albums</strong> list where you can see a titles as links following to the content with details. Home page has an options to <strong>SEARCH</strong> and <strong>SORT</strong> by the user name.<br />
 Also, in header you can open full lists with posts and albums of all users.<br />
-You can also share the url and the content will be fixed.<br />
+You can also share the <strong>URL</strong> and the content will be fixed.<br />
 
 To install all dependencies and build the project run:<br />
 npm i<br />
