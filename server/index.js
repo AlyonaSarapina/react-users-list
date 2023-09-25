@@ -14,7 +14,7 @@ if (typeof document !== 'undefined') {
   app.get('/', (req, res) => {
     const root = document.getElementById('root');
     const app = (
-      ReactDOM.hydrate(<React.StrictMode>
+      ReactDOM.render(<React.StrictMode>
         <Root />
       </React.StrictMode>, root)
     );
