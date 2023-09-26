@@ -42,8 +42,6 @@ export const UsersList = () => {
       .then(data => {
         setUsers(data);
       })
-
-
   }, []);
 
   const handleSearchParams = (e, sortBy) => {
