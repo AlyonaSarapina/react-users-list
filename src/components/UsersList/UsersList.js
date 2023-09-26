@@ -32,10 +32,8 @@ const handleFilter = (users, query, sortQuery) => {
 export const UsersList = () => {
   const [users, setUsers] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams()
-  // const [query, setQuery] = useState('');
   const query = searchParams.get('query') || '';
   const sortBy = searchParams.get('sortBy') || '';
-  // const [sortQuery, setSortQuery] = useState('')
 
   useEffect(() => {
     fetchUsers()
@@ -44,7 +42,7 @@ export const UsersList = () => {
       })
   }, []);
 
-  const handleSearchParams = (e, sortBy) => {
+  const handleSearchParams = (e) => {
     const params = new URLSearchParams(searchParams);
 
     if (!e.target.value) {
