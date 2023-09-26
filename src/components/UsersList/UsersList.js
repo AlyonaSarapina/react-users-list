@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import './UsersList.scss'
 import { fetchUsers } from '../../api/fetch';
 import cn from 'classnames';
@@ -31,17 +31,50 @@ const handleFilter = (users, query, sortQuery) => {
 
 export const UsersList = () => {
   const [users, setUsers] = useState([]);
-  const [query, setQuery] = useState('');
-  const [sortQuery, setSortQuery] = useState('')
+  const [searchParams, setSearchParams] = useSearchParams()
+  // const [query, setQuery] = useState('');
+  const query = searchParams.get('query') || '';
+  const sortBy = searchParams.get('sortBy') || '';
+  // const [sortQuery, setSortQuery] = useState('')
 
   useEffect(() => {
     fetchUsers()
       .then(data => {
         setUsers(data);
       })
+
+
   }, []);
 
-  const filteredUsers = handleFilter(users, query, sortQuery);
+  const handleSearchParams = (e, sortBy) => {
+    const params = new URLSearchParams(searchParams);
+
+    if (!e.target.value) {
+      params.delete('query')
+    } else {
+      params.set('query', e.target.value);
+    }
+
+    setSearchParams(params);
+  }
+
+  const handleSortParams = (e, sortQuery) => {
+    e.preventDefault();
+
+    const params = new URLSearchParams(searchParams);
+
+    console.log(params);
+
+    if (sortQuery === sortBy) {
+      params.delete('sortBy')
+    } else {
+      params.set('sortBy', sortQuery);
+    }
+
+    setSearchParams(params);
+  }
+
+  const filteredUsers = handleFilter(users, query, sortBy);
 
   return (
     <div className='users-container'>
@@ -51,34 +84,21 @@ export const UsersList = () => {
           className="panel-search-input"
           placeholder="Enter name"
           value={query}
-          onChange={event => setQuery(event.target.value)}
+          onChange={handleSearchParams}
         />
         <div className="panel-sort">
           <div
+            onClick={(e) => handleSortParams(e, 'asc')}
             className={cn('panel-sort-asc', {
-              'is-active': sortQuery === 'asc'
+              'is-active': sortBy === 'asc'
             })}
-            onClick={() => {
-              if (sortQuery === 'asc') {
-                setSortQuery('')
-                return;
-              }
-              setSortQuery('asc');
-            }}
           >
             ↑
           </div>
           <div
-            onClick={() => {
-              if (sortQuery === 'desc') {
-                setSortQuery('')
-                return;
-              }
-              setSortQuery('desc');
-            }
-            }
+            onClick={(e) => handleSortParams(e, 'desc')}
             className={cn('panel-sort-desc', {
-              'is-active': sortQuery === 'desc'
+              'is-active': sortBy === 'desc'
             })}
           >
             ↓
